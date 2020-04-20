@@ -20,7 +20,7 @@ export default class TitleScene extends Phaser.Scene {
         fill: 'rgb(0, 255, 255)',
         stroke: '#fff',
         strokeThickness: 5,
-        shadow: '0 20px 20px rgba(0,0,0,.15)'
+        shadow: '0 20px 20px rgba(0,0,0,0.15)'
       }
     });
     loadingText.setOrigin(0.5, 3.5);

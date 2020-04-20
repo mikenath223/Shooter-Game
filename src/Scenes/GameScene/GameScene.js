@@ -1,5 +1,5 @@
 import 'phaser';
-import { Player, PlayerLaser, EnemyLaser, GunShip, CarrierShip, ChaserShip } from './GameObjects';
+import { Player, GunShip, CarrierShip, ChaserShip } from './GameObjects';
 
 
 export default class GameScene extends Phaser.Scene {
@@ -89,7 +89,6 @@ export default class GameScene extends Phaser.Scene {
       "sprPlayer"
     );
     this.player.setScale(2.5);
-    console.log(this.player);
 
     this.keyW = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.W);
     this.keyS = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.S);

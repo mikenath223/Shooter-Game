@@ -7,10 +7,13 @@ export default class PlayerDetails extends Phaser.Scene {
   }
 
   preload() {
+    this.load.image("gameoverBg", "assets/stars.jpg");
     // this.load.image('user', 'assets/person.png')
   }
 
   create() {
+    this.add.image(230, 380, 'gameoverBg');
+
     var width = this.cameras.main.width;
     var height = this.cameras.main.height;
 
@@ -23,11 +26,10 @@ export default class PlayerDetails extends Phaser.Scene {
         fill: 'rgb(0, 255, 255)',
         stroke: '#fff',
         strokeThickness: 5,
-        shadow: '0 20px 20px rgba(0,0,0,.15)'
-  }
+        shadow: '#fff'
+    }
     });
     print.setOrigin(0.5, 3.5);
-
 
     CreateLoginDialog(this, {
       x: 250,
@@ -41,7 +43,6 @@ export default class PlayerDetails extends Phaser.Scene {
           // print.text += `${username}`;
         }
       })
-      //.drawBounds(this.add.graphics(), 0xff0000);
       .popUp(2000);
 
     // this.add.text(0, 560, 'Click user name or password field to edit it\nClick Login button to show user name and password')
@@ -66,7 +67,7 @@ var CreateLoginDialog = function (scene, config, onSubmit) {
     background: scene.rexUI.add.roundRectangle(0, 0, 10, 10, 10).setStrokeStyle(2, COLOR_LIGHT),
     // icon: scene.add.image(0, 0, 'user'),
     text: scene.rexUI.add.BBCodeText(0, 0, username, { fixedWidth: 150, fixedHeight: 36, valign: 'center' }),
-    space: { left: 150 }
+    space: { left: 180 }
   })
     .setInteractive()
     .on('pointerdown', function () {
