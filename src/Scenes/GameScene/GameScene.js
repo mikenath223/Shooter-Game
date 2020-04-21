@@ -143,9 +143,12 @@ export default class GameScene extends Phaser.Scene {
       if (enemy) {
         if (enemy.onDestroy !== undefined) {
           enemy.onDestroy();
+          
+          console.log('shot-touched');
         }
         enemy.explode(true);
         playerLaser.destroy();
+        
       }
     });
 
@@ -154,6 +157,7 @@ export default class GameScene extends Phaser.Scene {
           !enemy.getData("isDead")) {
         player.explode(false);
         player.onDestroy();
+        console.log('collide-touched');
         enemy.explode(true);
       }
     });

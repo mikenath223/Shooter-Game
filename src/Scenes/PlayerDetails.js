@@ -1,3 +1,5 @@
+import { User } from "../modules/scoreBoard";
+
 const COLOR_PRIMARY = 0x4e342e;
 const COLOR_LIGHT = 0x7b5e57;
 
@@ -39,6 +41,7 @@ export default class PlayerDetails extends Phaser.Scene {
     })
       .on('login', function (username) {
         if (username.length > 0) {
+          new User(username)
           this.scene.scene.start('Title');
           // print.text += `${username}`;
         }

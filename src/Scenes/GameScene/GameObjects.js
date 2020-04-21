@@ -1,3 +1,5 @@
+import LeaderBoard from "../../modules/leaderboard";
+
 class Entity extends Phaser.GameObjects.Sprite {
   constructor(scene, x, y, key, type) {
     super(scene, x, y, key);
@@ -25,7 +27,7 @@ class Entity extends Phaser.GameObjects.Sprite {
       this.body.setVelocity(0, 0);
       this.on('animationcomplete', function() {
         if (canDestroy) {
-          this.destroy();
+          this.destroy();          
         }
         else {
           this.setVisible(false);
@@ -64,6 +66,7 @@ class Player extends Entity {
     this.scene.time.addEvent({ // go to game over scene
       delay: 1000,
       callback: function() {
+        new LeaderBoard
         this.scene.scene.start("GameOver");
       },
       callbackScope: this,

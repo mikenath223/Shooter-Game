@@ -1,7 +1,7 @@
 class User {
   constructor(username) {
     this.username = username;
-    this.score = 0
+    localStorage.setItem('name', username);
   }
 
   get playerName() {
@@ -9,23 +9,23 @@ class User {
   }
 }
 
-class Score extends Person {
+class Score {
   constructor() {
-    super(username);
-    this.score = 0
+    this.score = 0;
   }
 
   get score() {
-    return this.score
+    return this.score;
   }
 
   set score(points) {
     this.score += points
+    localStorage.setItem('score', this.score);
   }
 
   getScoreBoard() {
     return {
-      username: this.username,
+      username: localStorage.getItem('name'),
       score: this.score
     }
   }
