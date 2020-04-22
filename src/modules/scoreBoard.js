@@ -17,4 +17,4 @@ class Score {
   }
 }
 
-export { User, Score }
+export { User, Score };

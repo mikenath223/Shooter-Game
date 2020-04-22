@@ -5,7 +5,7 @@ export default {
   type: Phaser.AUTO,
   parent: 'phaser-example',
   dom: {
-    createContainer: true
+    createContainer: true,
   },
   plugins: {
     scene: [
@@ -13,8 +13,8 @@ export default {
         key: 'rexUI',
         plugin: RexUIPlugin,
         mapping: 'rexUI',
-      }
-    ]
+      },
+    ],
   },
   width: 480,
   height: 640,
@@ -22,7 +22,7 @@ export default {
   physics: {
     default: 'arcade',
     arcade: {
-      gravity: { x: 0, y: 0 }
-    }
-  }
+      gravity: { x: 0, y: 0 },
+    },
+  },
 };

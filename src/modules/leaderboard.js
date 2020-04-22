@@ -9,37 +9,33 @@ export default class LeaderBoard {
   saveScore() {
     this.url = 'https://us-central1-js-capstone-backend.cloudfunctions.net/api/games/9gBpS1srKP6Utyne49W0/scores/';
     this.data = {
-      "user": localStorage.getItem('name'),
-      "score": localStorage.getItem('score')
-    }
+      user: localStorage.getItem('name'),
+      score: localStorage.getItem('score'),
+    };
     fetch(this.url, {
       mode: 'cors',
       method: 'POST',
       body: JSON.stringify(this.data),
       headers: {
-        'Content-Type': 'application/json'
-      }
-    }).then(res => console.log(res.json()))
+        'Content-Type': 'application/json',
+      },
+    }).then(res => console.log(res.json()));
   }
 
   async getBoard() {
     this.url = 'https://us-central1-js-capstone-backend.cloudfunctions.net/api/games/9gBpS1srKP6Utyne49W0/scores/';
     let result = await fetch(this.url, {
-      mode: 'cors'
-    })
-    let data = await result.json()
+      mode: 'cors',
+    });
+    const data = await result.json();
     result = data.result;
     const answer = {};
     result.forEach(element => {
       if (!answer[element.user]) {
-        answer[element.user] = element.score
+        answer[element.user] = element.score;
+      } else if (+element.score > +answer[element.user]) {
+        answer[element.user] = element.score;
       }
-      else {
-        if (+element.score > +answer[element.user]) {
-          answer[element.user] = element.score
-        }
-      }
-    })
+    });
   }
-
 }

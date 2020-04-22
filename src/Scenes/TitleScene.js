@@ -3,15 +3,15 @@ import config from '../Config/config';
 import Button from '../Objects/Button';
 
 export default class TitleScene extends Phaser.Scene {
-  constructor () {
+  constructor() {
     super('Title');
   }
 
-  create () {
-    var width = this.cameras.main.width;
-    var height = this.cameras.main.height;
+  create() {
+    const { width } = this.cameras.main;
+    const { height } = this.cameras.main;
     // Title
-    var loadingText = this.make.text({
+    const loadingText = this.make.text({
       x: width / 2,
       y: height / 2 - 50,
       text: 'Star Craft',
@@ -20,20 +20,20 @@ export default class TitleScene extends Phaser.Scene {
         fill: 'rgb(0, 255, 255)',
         stroke: '#fff',
         strokeThickness: 5,
-        shadow: '0 20px 20px rgba(0,0,0,0.15)'
-      }
+        shadow: '0 20px 20px rgba(0,0,0,0.15)',
+      },
     });
     loadingText.setOrigin(0.5, 3.5);
 
 
     // Game
-    this.gameButton = new Button(this, config.width/2, config.height/2 - 100, 'blueButton1', 'blueButton2', 'Play', 'Game');
+    this.gameButton = new Button(this, config.width / 2, config.height / 2 - 100, 'blueButton1', 'blueButton2', 'Play', 'Game');
 
     // Options
-    this.optionsButton = new Button(this, config.width/2, config.height/2, 'blueButton1', 'blueButton2', 'Options', 'Options');
+    this.optionsButton = new Button(this, config.width / 2, config.height / 2, 'blueButton1', 'blueButton2', 'Options', 'Options');
 
     // Credits
-    this.creditsButton = new Button(this, config.width/2, config.height/2 + 100, 'blueButton1', 'blueButton2', 'Credits', 'Credits');
+    this.creditsButton = new Button(this, config.width / 2, config.height / 2 + 100, 'blueButton1', 'blueButton2', 'Credits', 'Credits');
 
     this.model = this.sys.game.globals.model;
     if (this.model.musicOn === true && this.model.bgMusicPlaying === false) {
@@ -44,17 +44,17 @@ export default class TitleScene extends Phaser.Scene {
     }
   }
 
-  centerButton (gameObject, offset = 0) {
+  centerButton(gameObject, offset = 0) {
     Phaser.Display.Align.In.Center(
       gameObject,
-      this.add.zone(config.width/2, config.height/2 - offset * 100, config.width, config.height)
+      this.add.zone(config.width / 2, config.height / 2 - offset * 100, config.width, config.height),
     );
   }
 
-  centerButtonText (gameText, gameButton) {
+  centerButtonText(gameText, gameButton) {
     Phaser.Display.Align.In.Center(
       gameText,
-      gameButton
+      gameButton,
     );
   }
-};
+}
