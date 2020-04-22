@@ -1,5 +1,6 @@
 import 'phaser';
 import { Player, GunShip, CarrierShip, ChaserShip } from './GameObjects';
+import { Score } from '../../modules/scoreBoard';
 
 
 export default class GameScene extends Phaser.Scene {
@@ -82,6 +83,8 @@ export default class GameScene extends Phaser.Scene {
       laser: this.sound.add("sndLaser")
     };
 
+    let score = new Score()
+    console.log(score)
     this.player = new Player(
       this,
       this.game.config.width * 0.5,
@@ -102,19 +105,19 @@ export default class GameScene extends Phaser.Scene {
 
     this.time.addEvent({
       delay: 1000,
-      callback: function() {
+      callback: function () {
         var enemy = null;
 
         if (Phaser.Math.Between(0, 10) >= 3) {
           enemy = new GunShip(
             this,
-            Phaser.Math.Between(0, this.game.config.width+ 10),
+            Phaser.Math.Between(0, this.game.config.width + 10),
             0
           );
         }
         else if (Phaser.Math.Between(0, 10) >= 5) {
           if (this.getEnemiesByType("ChaserShip").length < 5) {
-    
+
             enemy = new ChaserShip(
               this,
               Phaser.Math.Between(0, this.game.config.width + 10),
@@ -129,7 +132,7 @@ export default class GameScene extends Phaser.Scene {
             0
           );
         }
-    
+
         if (enemy !== null) {
           enemy.setScale(2.5);
           this.enemies.add(enemy);
@@ -139,22 +142,22 @@ export default class GameScene extends Phaser.Scene {
       loop: true
     });
 
-    this.physics.add.collider(this.playerLasers, this.enemies, function(playerLaser, enemy) {
+    this.physics.add.collider(this.playerLasers, this.enemies, function (playerLaser, enemy) {
       if (enemy) {
         if (enemy.onDestroy !== undefined) {
           enemy.onDestroy();
-          
+          score.increaseScore();
+          console.log(score)
           console.log('shot-touched');
         }
         enemy.explode(true);
         playerLaser.destroy();
-        
       }
     });
 
-    this.physics.add.overlap(this.player, this.enemies, function(player, enemy) {
+    this.physics.add.overlap(this.player, this.enemies, function (player, enemy) {
       if (!player.getData("isDead") &&
-          !enemy.getData("isDead")) {
+        !enemy.getData("isDead")) {
         player.explode(false);
         player.onDestroy();
         console.log('collide-touched');
@@ -162,9 +165,9 @@ export default class GameScene extends Phaser.Scene {
       }
     });
 
-    this.physics.add.overlap(this.player, this.enemyLasers, function(player, laser) {
+    this.physics.add.overlap(this.player, this.enemyLasers, function (player, laser) {
       if (!player.getData("isDead") &&
-          !laser.getData("isDead")) {
+        !laser.getData("isDead")) {
         player.explode(false);
         player.onDestroy();
         laser.destroy();

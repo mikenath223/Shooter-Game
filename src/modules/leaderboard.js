@@ -1,20 +1,9 @@
+import 'regenerator-runtime';
 
 export default class LeaderBoard {
-  constructor() {
-    // this.scores = scores
-    fetch('https://us-central1-js-capstone-backend.cloudfunctions.net/api/games/', {
-      mode: 'cors',
-      method: 'POST',
-      body: JSON.stringify({ name: "StarCraft" }),
-      headers: {
-        'Content-Type': 'application/json'
-      }
-    }).then(res => console.log(res.json()))
-  }
   // Game with ID: 9gBpS1srKP6Utyne49W0 added.
+  constructor() {
 
-  getBoard() {
-    this.score
   }
 
   saveScore() {
@@ -33,12 +22,24 @@ export default class LeaderBoard {
     }).then(res => console.log(res.json()))
   }
 
-  getBoard() {
+  async getBoard() {
     this.url = 'https://us-central1-js-capstone-backend.cloudfunctions.net/api/games/9gBpS1srKP6Utyne49W0/scores/';
-    fetch(this.url,{
+    let result = await fetch(this.url, {
       mode: 'cors'
-    }).then(res => {
-      console.log(res.json())
+    })
+    let data = await result.json()
+    result = data.result;
+    const answer = {};
+    result.forEach(element => {
+      if (!answer[element.user]) {
+        answer[element.user] = element.score
+      }
+      else {
+        if (+element.score > +answer[element.user]) {
+          answer[element.user] = element.score
+        }
+      }
     })
   }
+
 }

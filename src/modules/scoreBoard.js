@@ -3,10 +3,6 @@ class User {
     this.username = username;
     localStorage.setItem('name', username);
   }
-
-  get playerName() {
-    return this.username
-  }
 }
 
 class Score {
@@ -14,20 +10,10 @@ class Score {
     this.score = 0;
   }
 
-  get score() {
-    return this.score;
-  }
-
-  set score(points) {
-    this.score += points
+  increaseScore() {
+    this.score += 50;
     localStorage.setItem('score', this.score);
-  }
-
-  getScoreBoard() {
-    return {
-      username: localStorage.getItem('name'),
-      score: this.score
-    }
+    return this.score;
   }
 }
 
