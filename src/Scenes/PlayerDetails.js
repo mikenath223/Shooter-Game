@@ -45,7 +45,6 @@ export default class PlayerDetails extends Phaser.Scene {
         }
       })
       .popUp(2000);
-
   }
 
   update() { }
