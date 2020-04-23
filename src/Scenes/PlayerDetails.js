@@ -10,7 +10,6 @@ export default class PlayerDetails extends Phaser.Scene {
 
   preload() {
     this.load.image('gameoverBg', 'assets/stars.jpg');
-    // this.load.image('user', 'assets/person.png')
   }
 
   create() {
@@ -43,12 +42,10 @@ export default class PlayerDetails extends Phaser.Scene {
         if (username.length > 0) {
           new User(username);
           this.scene.scene.start('Title');
-          // print.text += `${username}`;
         }
       })
       .popUp(2000);
 
-    // this.add.text(0, 560, 'Click user name or password field to edit it\nClick Login button to show user name and password')
   }
 
   update() { }
