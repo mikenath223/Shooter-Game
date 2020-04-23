@@ -11,21 +11,14 @@ class Entity extends Phaser.GameObjects.Sprite {
     this.setData('isDead', false);
   }
 
-  explode(canDestroy) {
+  explode() {
     if (!this.getData('isDead')) {
-      // Set the texture to the explosion image, then play the animation
-      this.setTexture('sprExplosion'); // this refers to the same animation key we used when we added this.anims.create previously
-      this.play('sprExplosion'); // play the animation
-      // pick a random explosion sound within the array we defined in this.sfx in SceneMain
+      this.setTexture('sprExplosion');
+      this.play('sprExplosion');
       this.scene.sfx.explosions[Phaser.Math.Between(0, this.scene.sfx.explosions.length - 1)].play();
       
-      this.setAngle(0);
       this.on('animationcomplete', function () {
-        if (canDestroy) {
           this.destroy();
-        } else {
-          this.setVisible(false);
-        }
       }, this);
       this.setData('isDead', true);
     }
@@ -56,6 +49,10 @@ export default class GamePlayScene extends Phaser.Scene {
     this.load.spritesheet('sprEnemy2', '../assets/content/sprEnemy2.png', {
       frameWidth: 16,
       frameHeight: 16,
+    });
+    this.load.spritesheet('sprExplosion', '../assets/content/sprExplosion.png', {
+      frameWidth: 32,
+      frameHeight: 32,
     });
     this.load.image('player', '../assets/images/ship.png');
     this.load.image('bullet1', '../assets/images/bullet11.png');
@@ -209,7 +206,7 @@ export default class GamePlayScene extends Phaser.Scene {
           console.log(score);
           
         }
-        enemy.explode(true);
+        enemy.explode();
         bullet.destroy();
       }
     }, null, this);
