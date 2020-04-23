@@ -11,14 +11,15 @@ class Entity extends Phaser.GameObjects.Sprite {
     this.setData('isDead', false);
   }
 
-  explode() {
+  explode(score) {
     if (!this.getData('isDead')) {
       this.setTexture('sprExplosion');
       this.play('sprExplosion');
       this.scene.sfx.explosions[Phaser.Math.Between(0, this.scene.sfx.explosions.length - 1)].play();
-      
+
       this.on('animationcomplete', function () {
-          this.destroy();
+        this.destroy();
+        score.increaseScore()
       }, this);
       this.setData('isDead', true);
     }
@@ -128,7 +129,7 @@ export default class GamePlayScene extends Phaser.Scene {
           this.scene = scene;
           this.scene.add.existing(this);
           this.scene.physics.world.enableBody(this, 0);
-      
+
           this.speed = Phaser.Math.GetSpeed(600, 1);
         },
 
@@ -193,20 +194,14 @@ export default class GamePlayScene extends Phaser.Scene {
     })
 
     const score = new Score();
-    
-    this.physics
+
     this.physics.add.collider(this.bullets, this.enemies, (bullet, enemy) => {
       console.log('touch');
       if (enemy) {
         console.log('touched');
-        
-        if (enemy.onDestroy !== undefined) {
-          enemy.onDestroy();
-          score.increaseScore();
-          console.log(score);
-          
-        }
-        enemy.explode();
+        ;
+        console.log(score);
+        enemy.explode(score);
         bullet.destroy();
       }
     }, null, this);
@@ -238,5 +233,5 @@ export default class GamePlayScene extends Phaser.Scene {
       loop: false,
     });
   }
-  
+
 }
