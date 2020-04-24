@@ -10,7 +10,7 @@
     "test:watch": "jest --watch --verbose",
     "dev": "webpack-dev-server --config webpack/base.js --open"
   },
-    "repository": {
+  "repository": {
     "type": "git",
     "url": "git+https://github.com/photonstorm/phaser3-project-template.git"
   },
@@ -39,6 +39,7 @@
   },
   "dependencies": {
     "copy-webpack-plugin": "^5.1.1",
+    "express": "^4.17.1",
     "html-webpack-plugin": "^4.2.0",
     "jest": "^25.4.0",
     "phaser": "^3.20.1",
