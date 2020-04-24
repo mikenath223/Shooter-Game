@@ -25,9 +25,7 @@ module.exports = {
             presets: ['@babel/preset-env']
           }
         }
-      }
-    ],
-    rules: [
+      },
       {
         test: /\.css$/,
         use: ['style-loader', 'css-loader'],
@@ -61,5 +59,7 @@ module.exports = {
       'typeof WEBGL_RENDERER': JSON.stringify(true)
     })
   ],
- 
+  devServer: {
+    contentBase: path.resolve(__dirname, 'build'),
+  }
 }

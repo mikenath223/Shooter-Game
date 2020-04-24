@@ -24,7 +24,7 @@ describe('Testing out the leaderboard API endpoints', () => {
     })
 
     const recievedScore = await board.getBoard();
-    expect(scores).toEqual({
+    expect(recievedScore).toEqual({
       result: [
         {
           user: 'mike',
