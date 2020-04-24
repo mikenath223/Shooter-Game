@@ -51,9 +51,9 @@ export default class PlayerDetails extends Phaser.Scene {
 }
 
 const { GetValue } = Phaser.Utils.Objects;
-var CreateLoginDialog = function (scene, config, onSubmit) {
+var CreateLoginDialog = function (scene, config) {
   let username = GetValue(config, 'username', '');
-  const title = GetValue(config, 'title', 'Welcome');
+  const title = GetValue(config, 'title');
   const x = GetValue(config, 'x', 0);
   const y = GetValue(config, 'y', 0);
   const width = GetValue(config, 'width', undefined);
@@ -64,9 +64,8 @@ var CreateLoginDialog = function (scene, config, onSubmit) {
   var userNameField = scene.rexUI.add.label({
     orientation: 'x',
     background: scene.rexUI.add.roundRectangle(0, 0, 10, 10, 10).setStrokeStyle(2, COLOR_LIGHT),
-    // icon: scene.add.image(0, 0, 'user'),
     text: scene.rexUI.add.BBCodeText(0, 0, username, { fixedWidth: 150, fixedHeight: 36, valign: 'center' }),
-    space: { left: 180 },
+    space: { left: 50, bottom: 50, top: -30 }
   })
     .setInteractive()
     .on('pointerdown', () => {
@@ -84,7 +83,7 @@ var CreateLoginDialog = function (scene, config, onSubmit) {
     background: scene.rexUI.add.roundRectangle(0, 0, 10, 10, 10, COLOR_LIGHT),
     text: scene.add.text(0, 0, 'SUBMIT'),
     space: {
-      top: 8, bottom: 8, left: 20, right: 20,
+      top: 8, bottom: 8, left: 8, right: 8,
     },
   })
     .setInteractive()
@@ -103,7 +102,7 @@ var CreateLoginDialog = function (scene, config, onSubmit) {
     .add(titleField, 0, 'center', {
       top: 10, bottom: 10, left: 10, right: 10,
     }, false)
-    .add(userNameField, 0, 'left', { bottom: 10, left: 10, right: 10 }, true)
+    .add(userNameField, 0, 'top', { bottom: 10, left: 10, right: 10 }, true)
     .add(loginButton, 0, 'center', { bottom: 10, left: 10, right: 10 }, false)
     .layout();
   return loginDialog;

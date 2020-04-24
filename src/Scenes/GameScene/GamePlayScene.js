@@ -198,17 +198,30 @@ export default class GamePlayScene extends Phaser.Scene {
     this.physics.add.collider(this.bullets, this.enemies, (bullet, enemy) => {
       console.log('touch');
       if (enemy) {
-        console.log('touched');
-        ;
-        console.log(score);
         enemy.explode(score);
         bullet.destroy();
       }
     }, null, this);
 
+    this.time.addEvent({
+      delay: 1500,
+      callback() {
+        if (this.enemies.getChildren().length > 5) {
+          this.ship.setTexture('sprExplosion');
+          this.ship.play('sprExplosion')
+          this.sfx.explosions[Phaser.Math.Between(0, this.sfx.explosions.length - 1)].play();
+          this.ship.on('animationcomplete', function () {
+            this.ship.destroy()
+            this.scene.start('GameOver');
+          }, this);
+        }
+      },
+      callbackScope: this,
+      loop: true
+    })
   }
 
-  update(time, diff) {
+  update(time) {
     this.background.anims.play('bgImg', true);
     this.ship.setRotation(Phaser.Math.Angle.Between(this.mouseX, this.mouseY, this.ship.x, this.ship.y) - Math.PI / 2);
 
@@ -217,21 +230,9 @@ export default class GamePlayScene extends Phaser.Scene {
       bullet.setScale(0.6);
       if (bullet) {
         bullet.fire(this.mouseX, this.mouseY);
-        // this.scene.sfx.laser.play(); // play the laser sound effect        
+        this.sfx.laser.play();
         this.lastFired = time + 50;
       }
     }
   }
-
-  onDestroy() {
-    this.scene.time.addEvent({
-      delay: 1000,
-      callback() {
-        this.scene.scene.start('GameOver');
-      },
-      callbackScope: this,
-      loop: false,
-    });
-  }
-
 }
