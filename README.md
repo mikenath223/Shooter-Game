@@ -8,11 +8,10 @@ A shooter game created with Phaser.js.
 [![Issues][issues-shield]][issues-url]
 [![MIT License][license-shield]][license-url]
 
-# Cowboy Shooter Game (js project)
 <br/>
 <p align="center">
   <a href="https://www.microverse.org/">
-    <img src="assets/microverse.png" alt="Logo" width="80" height="80">
+    <img src="assets/images/microverse.png" alt="Logo" width="80" height="80">
   </a>
 
   <h3 align="center">
@@ -20,7 +19,7 @@ A shooter game created with Phaser.js.
   </h3>
 
   <h3 align="center">
-	 Live Version link - https://fierce-cliffs-23219.herokuapp.com/
+	 Live Version link - https://intense-sea-92846.herokuapp.com/
   </h3>
 
   <p align="center">
@@ -30,38 +29,35 @@ A shooter game created with Phaser.js.
   </p>
 </p>
 
-## Project 'Cowboy Shooter Game'
+## Project 'Shooter-Game'
 
 A game project app built with Javascipt. This is part of the Javascript Curriculum of Microverse School. The goal behind this project is to build a shooter game with Phaser 3. The requirements are the ability to gain score, kills enemies, lo lose and get your score level saved to a leaderboard. Oh! And also to have fun!
 
 
-![game](assets/game.png)
-
-
+![game](assets/images/game.png)
 
 ## Video commentary
 
-Here is video demostration of the game. I comment this while I am playing it.
+<!-- Here is video demostration of the game. I comment this while I am playing it.
 
-Go here: https://www.loom.com/share/55f6e17adf594a33a778f9c6f60b09f8
+Go here: https://www.loom.com/share/55f6e17adf594a33a778f9c6f60b09f8 -->
 
 ## Design
 This game was designed using Phaser 3. It contains three group of files for Scenes (Main Game Scene, Game Over Scene and Leaderboard Scene). The main purpose of this file is to create characters, handle the the characters logic, save the score and manage the Game Over logic.
 
-The rules of the game are: You have to free a playful king that was captured by some bad cowboys. You need to shoot at them and be very carefull not to kill king (he likes to jump all over the screen, he loves freedom and fun). If you touch the king you lose. 
+The rules of the game are: You . 
 
-Once you kill the game, you get a chance to store your name:
+Once you lose in the game you get a chance to see the leaderboard and watch how wel you rank against other player:
 
 
-![gameover](assets/gameover.png)
+![gameover](assets/images/gameover.png)
 
 Then you can click the submit button, or better, shoot with your mouse!
 
 You get a list of players and their scores, a Leaderboard.
 
 
-
-![leaderboard](assets/leaderboard.png)
+![leaderboard](assets/images/leaderboard.png)
 
 
 # Validations

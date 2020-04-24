@@ -5,8 +5,6 @@ const webpack = require('webpack');
 module.exports = {
   entry: {
     app: './src/index.js'
-    
-
   },
 
   output: {
@@ -25,19 +23,7 @@ module.exports = {
             presets: ['@babel/preset-env']
           }
         }
-      },
-      {
-        test: /\.css$/,
-        use: ['style-loader', 'css-loader'],
-      },
-      {
-        test: /\.(png|svg|jpg|gif)$/,
-        use: ['file-loader'],
-      },
-      {
-        test: /\.(woff|woff2|eot|ttf|otf)$/,
-        use: ['file-loader'],
-      },
+      }
     ]
   },
 
@@ -58,8 +44,5 @@ module.exports = {
       'typeof CANVAS_RENDERER': JSON.stringify(true),
       'typeof WEBGL_RENDERER': JSON.stringify(true)
     })
-  ],
-  devServer: {
-    contentBase: path.resolve(__dirname, 'build'),
-  }
+  ]
 }
