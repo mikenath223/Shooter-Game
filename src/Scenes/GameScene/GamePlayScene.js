@@ -11,7 +11,7 @@ class Entity extends Phaser.GameObjects.Sprite {
     this.setData('isDead', false);
   }
 
-  explode(score) {
+  explode(score, scoreText) {
     if (!this.getData('isDead')) {
       this.setTexture('sprExplosion');
       this.play('sprExplosion');
@@ -19,7 +19,8 @@ class Entity extends Phaser.GameObjects.Sprite {
 
       this.on('animationcomplete', function () {
         this.destroy();
-        score.increaseScore()
+        score.increaseScore();
+        scoreText.setText(score.increaseScore());
       }, this);
       this.setData('isDead', true);
     }
@@ -137,7 +138,6 @@ export default class GamePlayScene extends Phaser.Scene {
         this.setActive(true);
         this.setVisible(true);
 
-        //  Bullets fire from the middle of the screen to the given x/y
         this.setPosition(480 * 0.5,
           640 * 0.5);
 
@@ -161,6 +161,7 @@ export default class GamePlayScene extends Phaser.Scene {
         if (this.lifespan <= 0) {
           this.setActive(false);
           this.setVisible(false);
+          time + 1;
         }
       },
 
@@ -173,6 +174,17 @@ export default class GamePlayScene extends Phaser.Scene {
     });
 
     this.enemies = this.add.group();
+    const assetText = this.make.text({
+      x: 40,
+      y: 20,
+      text: '',
+      style: {
+        fill: '#fff',
+        font: '800 50px monospace',
+        stroke: '#fff',
+        strokeThickness: 2,
+      },
+    });
 
 
     this.time.addEvent({
@@ -196,9 +208,8 @@ export default class GamePlayScene extends Phaser.Scene {
     const score = new Score();
 
     this.physics.add.collider(this.bullets, this.enemies, (bullet, enemy) => {
-      console.log('touch');
       if (enemy) {
-        enemy.explode(score);
+        enemy.explode(score, assetText);
         bullet.destroy();
       }
     }, null, this);

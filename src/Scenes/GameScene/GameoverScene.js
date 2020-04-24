@@ -68,7 +68,6 @@ export default class GameOverScene extends Phaser.Scene {
       },
     })
       .layout();
-    // .drawBounds(this.add.graphics(), 0xff0000);
     updatePanel(scrollablePanel, 'LEADERBOARD \n \n \n Loading.');
     this.url = 'https://us-central1-js-capstone-backend.cloudfunctions.net/api/games/9gBpS1srKP6Utyne49W0/scores/';
     this.data = {
@@ -91,6 +90,7 @@ export default class GameOverScene extends Phaser.Scene {
     updatePanel(scrollablePanel, 'LEADERBOARD \n \n \n Loading...');
     const data = await result.json();
     result = data.result;
+    result = result.sort((a,b) => +b.score - +a.score)
     const answer = {};
     result.forEach(element => {
       if (!answer[element.user]) {

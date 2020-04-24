@@ -5,9 +5,12 @@
   "main": "src/index.js",
   "scripts": {
     "build": "webpack --config webpack/prod.js ",
-    "start": "webpack-dev-server --config webpack/base.js --open"
+    "start": "node --inspect server.js",
+    "test": "jest --verbose",
+    "test:watch": "jest --watch --verbose",
+    "dev": "webpack-dev-server --config webpack/base.js --open"
   },
-  "repository": {
+    "repository": {
     "type": "git",
     "url": "git+https://github.com/photonstorm/phaser3-project-template.git"
   },
@@ -35,7 +38,9 @@
     "webpack-merge": "^4.2.2"
   },
   "dependencies": {
+    "copy-webpack-plugin": "^5.1.1",
     "html-webpack-plugin": "^4.2.0",
+    "jest": "^25.4.0",
     "phaser": "^3.20.1",
     "phaser3-rex-plugins": "^1.1.11",
     "regenerator-runtime": "^0.13.5"

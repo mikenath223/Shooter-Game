@@ -10,9 +10,7 @@ export default class PreloaderScene extends Phaser.Scene {
   }
 
   preload() {
-    // add logo image
     this.add.image(230, 170, 'logo');
-    // display progress bar
 
     const { width } = this.cameras.main;
     const { height } = this.cameras.main;
@@ -49,17 +47,14 @@ export default class PreloaderScene extends Phaser.Scene {
     });
     assetText.setOrigin(0.5, -1.5);
 
-    // update progress bar
     this.load.on('progress', (value) => {
       percentText.setText(`${parseInt(value * 100)}%`);
     });
 
-    // update file progress text
     this.load.on('fileprogress', (file) => {
       assetText.setText(`Loading asset: ${file.key}`);
     });
 
-    // remove progress bar when complete
     this.load.on('complete', () => {
       loadingText.destroy();
       percentText.destroy();
@@ -69,7 +64,6 @@ export default class PreloaderScene extends Phaser.Scene {
 
     this.timedEvent = this.time.delayedCall(3000, this.ready, [], this);
 
-    // load assets needed in our game
     this.load.image('blueButton1', 'assets/ui/blue_button02.png');
     this.load.image('blueButton2', 'assets/ui/blue_button03.png');
     this.load.image('box', 'assets/ui/grey_box.png');
