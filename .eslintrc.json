@@ -18,6 +18,8 @@
       "max-classes-per-file": "off",
       "no-restricted-syntax": "off",
       "no-use-before-define": "off",
-      "class-methods-use-this": "off"
+      "class-methods-use-this": "off",
+      "no-unused-expressions": "off",
+      "func-names": "off"
     }
   }
