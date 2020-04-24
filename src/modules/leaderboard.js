@@ -28,14 +28,5 @@ export default class LeaderBoard {
       mode: 'cors',
     });
     const data = await result.json();
-    result = data.result;
-    const answer = {};
-    result.forEach(element => {
-      if (!answer[element.user]) {
-        answer[element.user] = element.score;
-      } else if (+element.score > +answer[element.user]) {
-        answer[element.user] = element.score;
-      }
-    });
   }
 }

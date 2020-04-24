@@ -9,6 +9,9 @@ import TitleScene from './Scenes/TitleScene';
 import OptionsScene from './Scenes/OptionsScene';
 import CreditsScene from './Scenes/CreditsScene';
 import Model from './Model';
+import '../assets/styles/style.css';
+import '../assets/styles/Normalize.css';
+
 
 class Game extends Phaser.Game {
   constructor() {

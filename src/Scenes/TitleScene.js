@@ -10,7 +10,6 @@ export default class TitleScene extends Phaser.Scene {
   create() {
     const { width } = this.cameras.main;
     const { height } = this.cameras.main;
-    // Title
     const loadingText = this.make.text({
       x: width / 2,
       y: height / 2 - 50,
@@ -26,13 +25,10 @@ export default class TitleScene extends Phaser.Scene {
     loadingText.setOrigin(0.5, 3.5);
 
 
-    // Game
     this.gameButton = new Button(this, config.width / 2, config.height / 2 - 100, 'blueButton1', 'blueButton2', 'Play', 'Game');
 
-    // Options
     this.optionsButton = new Button(this, config.width / 2, config.height / 2, 'blueButton1', 'blueButton2', 'Options', 'Options');
 
-    // Credits
     this.creditsButton = new Button(this, config.width / 2, config.height / 2 + 100, 'blueButton1', 'blueButton2', 'Credits', 'Credits');
 
     this.model = this.sys.game.globals.model;
