@@ -98,13 +98,13 @@ This project is licensed under the MIT License - see the [LICENSE.md](LICENSE.md
 
 <!-- MARKDOWN LINKS & IMAGES -->
 <!-- https://www.markdownguide.org/basic-syntax/#reference-style-links -->
-[contributors-shield]: https://img.shields.io/github/contributors/mkenath223/shooter-game.svg?style=flat-square
-[contributors-url]: https://github.com/mkenath223/shooter-game/graphs/contributors
-[forks-shield]: https://img.shields.io/github/forks/mkenath223/shooter-game
-[forks-url]: https://github.com/mkenath223/shooter-game/network/members
-[stars-shield]: https://img.shields.io/github/stars/mkenath223/shooter-game
-[stars-url]: https://github.com/mkenath223/shooter-game/stargazers
-[issues-shield]: https://img.shields.io/github/issues/mkenath223/shooter-game
-[issues-url]: https://github.com/mkenath223/shooter-game/issues
-[license-shield]: https://img.shields.io/github/license/mkenath223/shooter-game
-[license-url]: https://github.com/mkenath223/shooter-game/blob/master/LICENSE.txt
+[contributors-shield]: https://img.shields.io/github/contributors/mikenath223/shooter-game.svg?style=flat-square
+[contributors-url]: https://github.com/mikenath223/shooter-game/graphs/contributors
+[forks-shield]: https://img.shields.io/github/forks/mikenath223/shooter-game
+[forks-url]: https://github.com/mikenath223/shooter-game/network/members
+[stars-shield]: https://img.shields.io/github/stars/mikenath223/shooter-game
+[stars-url]: https://github.com/mikenath223/shooter-game/stargazers
+[issues-shield]: https://img.shields.io/github/issues/mikenath223/shooter-game
+[issues-url]: https://github.com/mikenath223/shooter-game/issues
+[license-shield]: https://img.shields.io/github/license/mikenath223/shooter-game
+[license-url]: https://github.com/mikenath223/shooter-game/blob/master/LICENSE.txt
