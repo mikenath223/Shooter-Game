@@ -101,7 +101,7 @@ export default class GameOverScene extends Phaser.Scene {
     });
 
 
-    let output = 'LEADERBOARD \n \n';
+    let output = 'LEADERBOARD \n \n Scroll the board to see more scores \n ';
     for (const el in answer) {
       output += `${el} ${answer[el]} \n`;
     }

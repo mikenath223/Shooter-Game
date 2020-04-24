@@ -34,7 +34,7 @@ A shooter game created with Phaser.js.
 A game project app built with Javascipt. This is part of the Javascript Curriculum of Microverse School. The goal behind this project is to build a shooter game with Phaser 3. The requirements are the ability to gain score, kills enemies, lo lose and get your score level saved to a leaderboard. Oh! And also to have fun!
 
 
-![game](assets/images/game.png)
+![game](assets/images/introscene.png)
 
 ## Video commentary
 
@@ -45,19 +45,19 @@ Go here: https://www.loom.com/share/55f6e17adf594a33a778f9c6f60b09f8 -->
 ## Design
 This game was designed using Phaser 3. It contains three group of files for Scenes (Main Game Scene, Game Over Scene and Leaderboard Scene). The main purpose of this file is to create characters, handle the the characters logic, save the score and manage the Game Over logic.
 
-The rules of the game are: You . 
+The rules of the game are: You get to play against Lord Valik who sends space capsules to destroy your planet home, you have to destroy them. If you let more than five(5) capsules remain on the battle scene the game is over!
 
-Once you lose in the game you get a chance to see the leaderboard and watch how wel you rank against other player:
+Once you lose in the game you get a chance to see the leaderboard and watch how well you rank against other player:
 
 
-![gameover](assets/images/gameover.png)
 
-Then you can click the submit button, or better, shoot with your mouse!
+You move your battleship with your mouse cursor and right-click on your mouse to shoot. Have fun!!!
+![gameover](assets/images/playscene.png)
 
 You get a list of players and their scores, a Leaderboard.
 
 
-![leaderboard](assets/images/leaderboard.png)
+![leaderboard](assets/images/overscene.png)
 
 
 # Validations
