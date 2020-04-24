@@ -1,4 +1,4 @@
-import 'phaser';
+import Phaser from 'phaser';
 import config from '../Config/config';
 
 export default class CreditsScene extends Phaser.Scene {
@@ -8,7 +8,7 @@ export default class CreditsScene extends Phaser.Scene {
 
   create() {
     this.creditsText = this.add.text(0, 0, 'Credits', { fontSize: '32px', fill: '#fff' });
-    this.madeByText = this.add.text(0, 0, 'Created By: Michgolden Ukeje', { fontSize: 36, fill: '#fff' });
+    this.madeByText = this.add.text(0, 0, 'Created By: Michgolden Ukeje', { fontSize: 16, fill: '#fff' });
     this.zone = this.add.zone(config.width / 2, config.height / 2, config.width, config.height);
 
     Phaser.Display.Align.In.Center(
@@ -29,9 +29,6 @@ export default class CreditsScene extends Phaser.Scene {
       ease: 'Power1',
       duration: 3000,
       delay: 500,
-      onComplete() {
-        this.destroy;
-      },
     });
 
     this.madeByTween = this.tweens.add({
@@ -40,10 +37,6 @@ export default class CreditsScene extends Phaser.Scene {
       ease: 'Power1',
       duration: 5000,
       delay: 500,
-      onComplete: function () {
-        this.madeByTween.destroy;
-        this.scene.start('Title');
-      }.bind(this),
     });
   }
 }

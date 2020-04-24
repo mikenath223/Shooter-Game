@@ -4,12 +4,12 @@ const webpack = require('webpack');
 
 module.exports = {
   entry: {
-    app: './src/index.js'
+    app: './src/index.js',
   },
 
   output: {
     path: path.resolve(__dirname, 'build'),
-    filename: 'app.bundle.js'
+    filename: 'app.bundle.js',
   },
 
   module: {
@@ -20,29 +20,28 @@ module.exports = {
         use: {
           loader: 'babel-loader',
           options: {
-            presets: ['@babel/preset-env']
-          }
-        }
-      }
-    ]
+            presets: ['@babel/preset-env'],
+          },
+        },
+      },
+    ],
   },
 
-  
 
   plugins: [
     new CopyWebpackPlugin([
       {
         from: path.resolve(__dirname, 'index.html'),
-        to: path.resolve(__dirname, 'build')
+        to: path.resolve(__dirname, 'build'),
       },
       {
         from: path.resolve(__dirname, 'assets', '**', '*'),
-        to: path.resolve(__dirname, 'build')
-      }
+        to: path.resolve(__dirname, 'build'),
+      },
     ]),
     new webpack.DefinePlugin({
       'typeof CANVAS_RENDERER': JSON.stringify(true),
-      'typeof WEBGL_RENDERER': JSON.stringify(true)
-    })
-  ]
-}
+      'typeof WEBGL_RENDERER': JSON.stringify(true),
+    }),
+  ],
+};

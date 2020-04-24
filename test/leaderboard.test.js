@@ -10,35 +10,35 @@ describe('Testing out the leaderboard API endpoints', () => {
       result: [
         {
           user: 'mike',
-          score: '1200'
+          score: '1200',
         },
         {
           user: 'flint',
-          score: '350'
+          score: '350',
         },
         {
           user: 'same',
-          score: '35'
-        }
-      ]
-    })
+          score: '35',
+        },
+      ],
+    });
 
     const recievedScore = await board.getBoard();
     expect(recievedScore).toEqual({
       result: [
         {
           user: 'mike',
-          score: '1200'
+          score: '1200',
         },
         {
           user: 'flint',
-          score: '350'
+          score: '350',
         },
         {
           user: 'same',
-          score: '35'
-        }
-      ]
-    })
-  })
-})
+          score: '35',
+        },
+      ],
+    });
+  });
+});

@@ -1,6 +1,37 @@
+import Phaser from 'phaser';
 import config from '../../Config/config';
 import Button from '../../Objects/Button';
 import 'regenerator-runtime';
+
+
+function updatePanel(panel, content) {
+  const sizer = panel.getElement('panel');
+  const { scene } = panel;
+
+  sizer.clear(true);
+  const lines = content.split('\n');
+  for (let li = 0, lcnt = lines.length; li < lcnt; li += 1) {
+    const words = lines[li].split(' ');
+    for (let wi = 0, wcnt = words.length; wi < wcnt; wi += 1) {
+      sizer.add(
+        scene.add.text(0, 0, words[wi], {
+          fontSize: 28,
+        })
+          .setInteractive()
+          .on('pointerdown', function playThis() {
+            this.scene.print.text = this.text;
+            this.setTint(Phaser.Math.Between(0, 0xffffff));
+          }),
+      );
+    }
+    if (li < (lcnt - 1)) {
+      sizer.addNewLine();
+    }
+  }
+
+  panel.layout();
+  return panel;
+}
 
 export default class GameOverScene extends Phaser.Scene {
   constructor() {
@@ -81,7 +112,7 @@ export default class GameOverScene extends Phaser.Scene {
       headers: {
         'Content-Type': 'application/json',
       },
-    }).then(res => console.log(res.json()));
+    });
 
     updatePanel(scrollablePanel, 'LEADERBOARD \n \n \n Loading..');
     let result = await fetch(this.url, {
@@ -90,9 +121,9 @@ export default class GameOverScene extends Phaser.Scene {
     updatePanel(scrollablePanel, 'LEADERBOARD \n \n \n Loading...');
     const data = await result.json();
     result = data.result;
-    result = result.sort((a,b) => +b.score - +a.score)
+    result = result.sort((a, b) => +b.score - +a.score);
     const answer = {};
-    result.forEach(element => {
+    result.forEach((element) => {
       if (!answer[element.user]) {
         answer[element.user] = element.score;
       } else if (+element.score > +answer[element.user]) {
@@ -101,44 +132,13 @@ export default class GameOverScene extends Phaser.Scene {
     });
 
 
-    let output = 'LEADERBOARD \n \n Scroll the board to see more scores \n ';
+    let output = 'LEADERBOARD \n \n Scroll the board to see more scores \n \n';
     for (const el in answer) {
       output += `${el} ${answer[el]} \n`;
     }
-    console.log(output);
 
     updatePanel(scrollablePanel, output);
 
     this.reloadButton = new Button(this, config.width / 2, config.height / 2 + 230, 'blueButton1', 'blueButton2', 'Reload', 'Game');
   }
 }
-
-var updatePanel = function (panel, content) {
-  const sizer = panel.getElement('panel');
-  const { scene } = panel;
-
-  sizer.clear(true);
-  const lines = content.split('\n');
-  for (let li = 0, lcnt = lines.length; li < lcnt; li++) {
-    const words = lines[li].split(' ');
-    for (let wi = 0, wcnt = words.length; wi < wcnt; wi++) {
-      sizer.add(
-        scene.add.text(0, 0, words[wi], {
-          fontSize: 28,
-        })
-          .setInteractive()
-          .on('pointerdown', function () {
-            this.scene.print.text = this.text;
-            this.setTint(Phaser.Math.Between(0, 0xffffff));
-          }),
-      );
-    }
-    if (li < (lcnt - 1)) {
-      sizer.addNewLine();
-    }
-  }
-
-
-  panel.layout();
-  return panel;
-};

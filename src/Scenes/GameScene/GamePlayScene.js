@@ -1,5 +1,5 @@
 import Phaser from 'phaser';
-import { Score } from '../../modules/scoreBoard';
+import Userdetails from '../../modules/scoreBoard';
 
 class Entity extends Phaser.GameObjects.Sprite {
   constructor(scene, x, y, key) {
@@ -15,12 +15,14 @@ class Entity extends Phaser.GameObjects.Sprite {
     if (!this.getData('isDead')) {
       this.setTexture('sprExplosion');
       this.play('sprExplosion');
-      this.scene.sfx.explosions[Phaser.Math.Between(0, this.scene.sfx.explosions.length - 1)].play();
+      this.scene.sfx.explosions[Phaser.Math.Between(
+        0, this.scene.sfx.explosions.length - 1,
+      )].play();
 
-      this.on('animationcomplete', function () {
+      this.on('animationcomplete', function playIt() {
         this.destroy();
         score.increaseScore();
-        scoreText.setText(score.increaseScore());
+        scoreText.setText(score.getScore());
       }, this);
       this.setData('isDead', true);
     }
@@ -38,7 +40,7 @@ class ChaserShip extends Entity {
 export default class GamePlayScene extends Phaser.Scene {
   constructor() {
     super('Game');
-    this.bullets1;
+    this.bullets1 = '';
   }
 
 
@@ -154,14 +156,12 @@ export default class GamePlayScene extends Phaser.Scene {
 
       update(time, delta) {
         this.lifespan -= delta;
-
         this.x -= this.incX * (this.speed * delta);
         this.y -= this.incY * (this.speed * delta);
 
         if (this.lifespan <= 0) {
           this.setActive(false);
           this.setVisible(false);
-          time + 1;
         }
       },
 
@@ -190,22 +190,22 @@ export default class GamePlayScene extends Phaser.Scene {
     this.time.addEvent({
       delay: 1000,
       callback() {
-        let enemy = new ChaserShip(
+        const enemy = new ChaserShip(
           this,
           Phaser.Math.Between(10, 450),
-          Phaser.Math.Between(10, 600)
-        )
+          Phaser.Math.Between(10, 600),
+        );
 
         if (enemy != null) {
           enemy.setScale(2.5);
-          this.enemies.add(enemy)
+          this.enemies.add(enemy);
         }
       },
       callbackScope: this,
       loop: true,
-    })
+    });
 
-    const score = new Score();
+    const score = new Userdetails();
 
     this.physics.add.collider(this.bullets, this.enemies, (bullet, enemy) => {
       if (enemy) {
@@ -219,22 +219,24 @@ export default class GamePlayScene extends Phaser.Scene {
       callback() {
         if (this.enemies.getChildren().length > 5) {
           this.ship.setTexture('sprExplosion');
-          this.ship.play('sprExplosion')
+          this.ship.play('sprExplosion');
           this.sfx.explosions[Phaser.Math.Between(0, this.sfx.explosions.length - 1)].play();
-          this.ship.on('animationcomplete', function () {
-            this.ship.destroy()
+          this.ship.on('animationcomplete', function playThat() {
+            this.ship.destroy();
             this.scene.start('GameOver');
           }, this);
         }
       },
       callbackScope: this,
-      loop: true
-    })
+      loop: true,
+    });
   }
 
   update(time) {
     this.background.anims.play('bgImg', true);
-    this.ship.setRotation(Phaser.Math.Angle.Between(this.mouseX, this.mouseY, this.ship.x, this.ship.y) - Math.PI / 2);
+    this.ship.setRotation(Phaser.Math.Angle.Between(
+      this.mouseX, this.mouseY, this.ship.x, this.ship.y,
+    ) - Math.PI / 2);
 
     if (this.isClicked && time > this.lastFired) {
       const bullet = this.bullets.get();

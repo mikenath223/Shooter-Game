@@ -1,3 +1,4 @@
+/* eslint no-underscore-dangle: off */
 export default class Model {
   constructor() {
     this._soundOn = true;

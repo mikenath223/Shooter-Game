@@ -1,21 +1,17 @@
-class User {
-  constructor(username) {
+export default class Userdetails {
+  constructor() {
+    this.score = 0;
+    this.username = '';
+  }
+
+  setUser(username) {
     this.username = username;
     localStorage.setItem('name', username);
+    return this.username;
   }
 
   getUser() {
     return this.username;
-  }
-}
-
-class Score {
-  constructor() {
-    this.score = 0;
-  }
-
-  getScore() {
-    return this.score;
   }
 
   increaseScore() {
@@ -23,6 +19,8 @@ class Score {
     localStorage.setItem('score', this.score);
     return this.score;
   }
-}
 
-export { User, Score };
+  getScore() {
+    return this.score;
+  }
+}

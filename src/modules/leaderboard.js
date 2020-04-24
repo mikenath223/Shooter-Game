@@ -1,9 +1,8 @@
 import 'regenerator-runtime';
 
 export default class LeaderBoard {
-  // Game with ID: 9gBpS1srKP6Utyne49W0 added.
   constructor() {
-
+    this.data = '';
   }
 
   saveScore() {
@@ -19,14 +18,14 @@ export default class LeaderBoard {
       headers: {
         'Content-Type': 'application/json',
       },
-    }).then(res => console.log(res.json()));
+    });
   }
 
   async getBoard() {
     this.url = 'https://us-central1-js-capstone-backend.cloudfunctions.net/api/games/9gBpS1srKP6Utyne49W0/scores/';
-    let result = await fetch(this.url, {
+    const result = await fetch(this.url, {
       mode: 'cors',
     });
-    return await result.json();
+    await result.json();
   }
 }
