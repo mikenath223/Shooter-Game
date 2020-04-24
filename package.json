@@ -12,10 +12,12 @@
     "author": "Michgolden Ukeje",
     "license": "ISC",
     "devDependencies": {
+        "css-loader": "^3.5.2",
         "eslint": "^6.8.0",
         "eslint-config-airbnb-base": "^14.1.0",
         "eslint-plugin-import": "^2.20.2",
-        "jest": "^25.3.0"
+        "jest": "^25.3.0",
+        "style-loader": "^1.1.4"
     },
     "dependencies": {
         "@babel/core": "^7.9.0",
