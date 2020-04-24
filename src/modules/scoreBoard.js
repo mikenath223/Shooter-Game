@@ -3,11 +3,19 @@ class User {
     this.username = username;
     localStorage.setItem('name', username);
   }
+
+  getUser() {
+    return this.username;
+  }
 }
 
 class Score {
   constructor() {
     this.score = 0;
+  }
+
+  getScore() {
+    return this.score;
   }
 
   increaseScore() {

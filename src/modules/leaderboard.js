@@ -27,6 +27,6 @@ export default class LeaderBoard {
     let result = await fetch(this.url, {
       mode: 'cors',
     });
-    const data = await result.json();
+    return await result.json();
   }
 }
