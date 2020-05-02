@@ -1,0 +1,8 @@
+./node_modules
+./node_modules/*
+build/*
+test/*
+./package-lock.json
+./package.json
+./webpack.config.js
+webpack

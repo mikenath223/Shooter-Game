@@ -1,0 +1,52 @@
+{
+    "name": "shooter-game",
+    "version": "1.0.0",
+    "description": "A star craft space shooter game.",
+    "main": "index.js",
+    "scripts": {
+        "test": "jest --watch",
+        "webpack": "webpack --watch",
+        "start": "node server.js"
+    },
+    "keywords": [],
+    "author": "Michgolden Ukeje",
+    "license": "ISC",
+    "devDependencies": {
+        "css-loader": "^3.5.2",
+        "eslint": "^6.8.0",
+        "eslint-config-airbnb-base": "^14.1.0",
+        "eslint-plugin-import": "^2.20.2",
+        "jest": "^25.3.0",
+        "style-loader": "^1.1.4"
+    },
+    "dependencies": {
+        "@babel/core": "^7.9.0",
+        "@babel/plugin-proposal-class-properties": "^7.8.3",
+        "@babel/plugin-proposal-export-default-from": "^7.8.3",
+        "@babel/plugin-transform-runtime": "^7.9.0",
+        "@babel/preset-env": "^7.9.0",
+        "@babel/preset-react": "^7.9.4",
+        "@babel/runtime": "^7.9.2",
+        "babel-core": "^6.26.3",
+        "babel-loader": "^8.1.0",
+        "babel-polyfill": "^6.26.0",
+        "babel-preset-env": "^1.7.0",
+        "copy-webpack-plugin": "^5.1.1",
+        "express": "^4.15.2",
+        "node-fetch": "^2.6.0",
+        "phaser": "^3.22.0",
+        "phaser3-rex-plugins": "^1.1.13",
+        "regenerator-runtime": "^0.13.5",
+        "socket.io": "^1.7.3",
+        "webpack": "^4.42.1",
+        "webpack-cli": "^3.3.11"
+    },
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/mikenath223/shooter-game.git"
+    },
+    "bugs": {
+        "url": "https://github.com/mikenath223/shooter-game/issues"
+    },
+    "homepage": "https://github.com/mikenath223/shooter-game#readme"
+}
