@@ -37,6 +37,7 @@ A game project app built with Javascipt. This is part of the Javascript Curricul
 ![game](assets/images/introscene.png)
 
 ## Video commentary
+https://www.loom.com/share/f518aaa30e2b435ab8662d7faaa0b7dc
 
 <!-- Here is video demostration of the game. I comment this while I am playing it.
 
@@ -62,7 +63,7 @@ You get a list of players and their scores, a Leaderboard.
 
 # Validations
 
-- ESLINT
+- ESLint
 
 # Get Started
 
@@ -73,11 +74,9 @@ Download or clone this [repo here](https://github.com/mikenath223/shooter-game).
 This project was built with these techologies:
 
 * Phaser 3
-* Javascript
-* ES6
-* Webpack & Babel
+* JavaScript(Webpack & Babel)
 * HTML
-* CSS3
+* CSS
 
 # Author
 
